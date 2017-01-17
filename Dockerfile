@@ -5,7 +5,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en  
 ENV LC_ALL en_US.UTF-8  
 
-RUN apt-get -y update && apt-get install -y python-pip wget gdebi ruby
+RUN apt-get -y update && apt-get install -y python-pip wget gdebi ruby rsync git
 
 RUN pip install pip --upgrade
 RUN pip install setuptools --upgrade
