@@ -18,3 +18,4 @@ RUN gdebi --n lsb-core_4.1+Debian13+nmu1_amd64.deb
 RUN apt-get -f install
 RUN pip install mkdocs
 RUN pip install pygments
+RUN pip install pymdown-extensions
