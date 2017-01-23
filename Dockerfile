@@ -19,5 +19,5 @@ RUN apt-get -f install
 RUN pip install mkdocs
 RUN pip install pygments
 RUN pip install pymdown-extensions
-RUN apt -y install nodejs
-RUN npm i markdown-spellcheck -g
+#RUN apt -y install nodejs
+#RUN npm i markdown-spellcheck -g
