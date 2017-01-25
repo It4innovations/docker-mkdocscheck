@@ -19,5 +19,6 @@ RUN apt-get -f install
 RUN pip install mkdocs
 RUN pip install pygments
 RUN pip install pymdown-extensions
+RUN pip install titlecase
 #RUN apt -y install nodejs
 #RUN npm i markdown-spellcheck -g
