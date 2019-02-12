@@ -1,26 +1,21 @@
 FROM ubuntu:xenial
 
-RUN apt-get clean && apt-get update && apt-get install -y locales
+RUN apt-get clean && apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+ENV LANG en_US.utf8
 
-RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+RUN apt-get clean && \
+    apt-get update -y && \
+    apt-get install -y python-pip wget gdebi ruby rsync git wget curl
 
-RUN apt-get -y update && apt-get install -y python-pip wget gdebi ruby rsync git wget curl
-
-RUN pip install pip --upgrade
-RUN pip install setuptools --upgrade
-RUN wget -q http://ftp.us.debian.org/debian/pool/main/l/lsb/lsb-security_4.1+Debian13+nmu1_amd64.deb
-RUN wget -q http://ftp.us.debian.org/debian/pool/main/l/lsb/lsb-invalid-mta_4.1+Debian13+nmu1_all.deb
-RUN wget -q http://ftp.us.debian.org/debian/pool/main/l/lsb/lsb-core_4.1+Debian13+nmu1_amd64.deb
-RUN gdebi --n lsb-security_4.1+Debian13+nmu1_amd64.deb
-RUN gdebi --n lsb-invalid-mta_4.1+Debian13+nmu1_all.deb
-RUN gdebi --n lsb-core_4.1+Debian13+nmu1_amd64.deb
+RUN pip install --upgrade pip setuptools
+RUN wget -q http://ftp.us.debian.org/debian/pool/main/l/lsb/lsb-security_4.1+Debian13+nmu1_amd64.deb && \
+    wget -q http://ftp.us.debian.org/debian/pool/main/l/lsb/lsb-invalid-mta_4.1+Debian13+nmu1_all.deb && \
+    wget -q http://ftp.us.debian.org/debian/pool/main/l/lsb/lsb-core_4.1+Debian13+nmu1_amd64.deb
+RUN gdebi --n lsb-security_4.1+Debian13+nmu1_amd64.deb && \
+    gdebi --n lsb-invalid-mta_4.1+Debian13+nmu1_all.deb && \
+    gdebi --n lsb-core_4.1+Debian13+nmu1_amd64.deb
 RUN apt-get -f install
-RUN pip install mkdocs==0.16.3
-RUN pip install pygments
-RUN pip install pymdown-extensions
-RUN pip install titlecase
+RUN pip install pygments pymdown-extensions titlecase mkdocs==0.16.3
 #RUN apt -y install nodejs
 #RUN npm i markdown-spellcheck -g
