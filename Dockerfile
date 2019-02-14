@@ -16,6 +16,6 @@ RUN gdebi --n lsb-security_4.1+Debian13+nmu1_amd64.deb && \
     gdebi --n lsb-invalid-mta_4.1+Debian13+nmu1_all.deb && \
     gdebi --n lsb-core_4.1+Debian13+nmu1_amd64.deb
 RUN apt-get -f install
-RUN pip install pygments pymdown-extensions titlecase mkdocs==0.16.3
+RUN pip install pygments pymdown-extensions titlecase mkdocs
 #RUN apt -y install nodejs
 #RUN npm i markdown-spellcheck -g
