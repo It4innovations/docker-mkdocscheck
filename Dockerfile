@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:latest
 
 RUN apt-get clean && apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
@@ -16,6 +16,6 @@ RUN gdebi --n lsb-security_4.1+Debian13+nmu1_amd64.deb && \
     gdebi --n lsb-invalid-mta_4.1+Debian13+nmu1_all.deb && \
     gdebi --n lsb-core_4.1+Debian13+nmu1_amd64.deb
 RUN apt-get -f install
-RUN pip install pygments pymdown-extensions titlecase mkdocs==0.16.3
+RUN pip install pygments pymdown-extensions titlecase mkdocs
 #RUN apt -y install nodejs
 #RUN npm i markdown-spellcheck -g
