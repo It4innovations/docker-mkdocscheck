@@ -1,4 +1,5 @@
 FROM ubuntu:latest
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get clean && apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
@@ -16,5 +17,6 @@ RUN gdebi --n lsb-security_4.1+Debian13+nmu1_amd64.deb && \
     gdebi --n lsb-invalid-mta_4.1+Debian13+nmu1_all.deb && \
     gdebi --n lsb-core_4.1+Debian13+nmu1_amd64.deb
 RUN apt-get -f install
+RUN pip install --upgrade pip setuptools
 RUN pip install virtualenv pygments pymdown-extensions titlecase mkdocs mkdocs-material
 RUN useradd -lM nginx
