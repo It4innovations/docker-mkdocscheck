@@ -18,5 +18,5 @@ RUN gdebi --n lsb-security_4.1+Debian13+nmu1_amd64.deb && \
     gdebi --n lsb-core_4.1+Debian13+nmu1_amd64.deb
 RUN apt-get -f install
 RUN pip install --upgrade pip setuptools
-RUN pip install virtualenv pygments pymdown-extensions titlecase mkdocs mkdocs-material
+RUN pip install virtualenv pygments pymdown-extensions==6.2.1 titlecase mkdocs mkdocs-material==4.6.0
 RUN useradd -lM nginx
