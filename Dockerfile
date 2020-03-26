@@ -7,7 +7,7 @@ ENV LANG en_US.utf8
 
 RUN apt-get clean && \
     apt-get update -y && \
-    apt-get install -y python-pip wget gdebi ruby rsync git wget curl
+    apt-get install -y python-pip virtualenv wget gdebi ruby rsync git wget curl
 
 RUN pip install --upgrade pip setuptools
 RUN wget -q http://ftp.us.debian.org/debian/pool/main/l/lsb/lsb-security_4.1+Debian13+nmu1_amd64.deb && \
@@ -18,5 +18,5 @@ RUN gdebi --n lsb-security_4.1+Debian13+nmu1_amd64.deb && \
     gdebi --n lsb-core_4.1+Debian13+nmu1_amd64.deb
 RUN apt-get -f install
 RUN pip install --upgrade pip setuptools
-RUN pip install virtualenv pygments pymdown-extensions==6.2.1 titlecase mkdocs mkdocs-material==4.6.0
+RUN pip install pygments pymdown-extensions==6.2.1 titlecase mkdocs mkdocs-material==4.6.0
 RUN useradd -lM nginx
