@@ -18,8 +18,13 @@ RUN gdebi --n lsb-security_4.1+Debian13+nmu1_amd64.deb && \
     gdebi --n lsb-core_4.1+Debian13+nmu1_amd64.deb
 RUN apt-get -f install
 RUN pip install --upgrade pip setuptools
-RUN pip install pygments pymdown-extensions==6.2.1 titlecase mkdocs mkdocs-material==4.6.0
-RUN virtualenv -p python3 .venv3
-RUN . .venv3/bin/activate && pip install --upgrade pip setuptools
-RUN . .venv3/bin/activate && pip install pygments pymdown-extensions titlecase mkdocs mkdocs-material
+RUN pip install backports-abc Click EditorConfig futures Jinja2 jsbeautifier livereload Markdown \
+                MarkupSafe mkdocs mkdocs-material==4.6.0 Pygments pymdown-extensions==6.2.1 \
+                PyYAML singledispatch six titlecase tornado
+RUN virtualenv -p python3 /opt/.venv3
+RUN . /opt/.venv3/bin/activate && pip install --upgrade pip setuptools
+RUN . /opt/.venv3/bin/activate && pip install backports-abc Click EditorConfig futures Jinja2 \
+                                              jsbeautifier livereload Markdown MarkupSafe mkdocs \
+                                              mkdocs-material Pygments pymdown-extensions PyYAML \
+                                              singledispatch six titlecase tornado
 RUN useradd -lM nginx
