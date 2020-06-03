@@ -28,3 +28,4 @@ RUN . /opt/.venv3/bin/activate && pip install backports-abc Click EditorConfig f
                                               mkdocs-material packaging Pygments pymdown-extensions \
                                               PyYAML singledispatch six titlecase tornado
 RUN useradd -lM nginx
+RUN echo "192.168.101.10 docs.it4i.cz" >> /etc/hosts
