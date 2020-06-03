@@ -1,3 +1,3 @@
 # docker-mkdocscheck
 
-Latest Ubuntu with MkDocs and Ruby.
+Latest Debian with MkDocs and Ruby.
